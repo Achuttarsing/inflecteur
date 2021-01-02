@@ -212,11 +212,11 @@ class inflecteur():
 
         cible = self.build_cible(row, gender, number, tense, person)
         try: 
-            word_affected = self.dico_transformer.loc[(self.dico_transformer.lemma == row.lemma) & (self.dico_transformer.forme.str.contains(cible)),[]].index.to_list()
+            word_affected = self.dico_transformer.loc[(self.dico_transformer.lemma == row.lemma) & (self.dico_transformer.forme.str.contains(cible)) & (self.dico_transformer.gram == pos),[]].index.to_list()
             word_affected = word if word in word_affected else word_affected[0]
             #print(word, "→", word_affected, "\tcible =", cible, "\tpos =", pos)
         except:
-            #print(word, "→", oriword, "\tcible =", cible, "\tpos =", pos)
+            #print("not found", word, "→", oriword, "\tcible =", cible, "\tpos =", pos)
             return oriword
         
         return word_affected[0].upper() + word_affected[1:] if maj else word_affected
@@ -256,5 +256,5 @@ class inflecteur():
                 else:
                     potential_person = self.detect_person(words[(c-2):c])  
             else: potential_person = None
-            res.append(d.inflect_word(t['word'], tense=tense, pos=d.bert_to_gram[t['entity_group']]['category'], person=potential_person, gender=gender, number=number))
+            res.append(self.inflect_word(t['word'], tense=tense, pos=self.bert_to_gram[t['entity_group']]['category'], person=potential_person, gender=gender, number=number))
         return self.rebuild_text(' '.join(res))

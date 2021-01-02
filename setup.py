@@ -15,7 +15,6 @@ setup(
   keywords="nlp inflector python inflecteur data augmentation french",
   install_requires = ['sentencepiece','transformers','pandas','numpy','glob','zipfile'],
   classifiers=[
-      "Framework :: Python",
       "Programming Language :: Python :: 3",
       "Topic :: Text Processing :: Linguistic",
       "Natural Language :: French"

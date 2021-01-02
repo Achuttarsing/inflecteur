@@ -118,6 +118,8 @@ class inflecteur():
         print("Done.")
 
     def load_bert_model(self):
+        from transformers import AutoTokenizer, AutoModelForTokenClassification
+        from transformers import pipeline
         tokenizer = AutoTokenizer.from_pretrained("gilf/french-camembert-postag-model")
         model = AutoModelForTokenClassification.from_pretrained("gilf/french-camembert-postag-model")
         self.nlp_token_class = pipeline('ner', model=model, tokenizer=tokenizer, grouped_entities=True)

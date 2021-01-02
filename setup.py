@@ -13,7 +13,7 @@ setup(
   long_description=open("README.md").read(),
   long_description_content_type="text/markdown",
   keywords="nlp inflector python inflecteur data augmentation french",
-  install_requires = ['sentencepiece','transformers','pandas','numpy','glob','zipfile'],
+  install_requires = ['sentencepiece','transformers','pandas','numpy'],
   classifiers=[
       "Programming Language :: Python :: 3",
       "Topic :: Text Processing :: Linguistic",

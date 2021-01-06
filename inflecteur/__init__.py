@@ -19,7 +19,15 @@ class inflecteur():
                             'Participe présent': 'G',
                             'Passé composé': 'K',
                             'Passé simple': 'J',
-                            'Présent': 'P'}
+                            'Présent': 'P',
+                            'Impératif Présent': 'Y'}
+        self.tense_table_inv = {v: k for k, v in self.tense_table.items()}
+        self.person_table = {'1s': 'Je',
+                            '2s': 'Tu',
+                            '3s': 'Il/Elle',
+                            '1p': 'Nous',
+                            '2p': 'Vous',
+                            '3p': 'Ils/Elles'}
         self.bert_to_gram = {'ADJ': {'category': 'Adjectif', 'extra info': None},
                             'ADJWH': {'category': 'Adjectif', 'extra info': None},
                             'ADV': {'category': 'Adverbe', 'extra info': None},
@@ -258,3 +266,40 @@ class inflecteur():
             else: potential_person = None
             res.append(self.inflect_word(t['word'], tense=tense, pos=self.bert_to_gram[t['entity_group']]['category'], person=potential_person, gender=gender, number=number))
         return self.rebuild_text(' '.join(res))
+
+    def get_word_form(self, word):
+        """ 
+        Get the potential forms of a word 
+  
+        Parameters: 
+            word (str): Sentence to inflect
+        Returns: 
+            list of potential forms 
+        """
+        potential_forms = self.dico_transformer.loc[[word]].copy()
+        potential_forms_dev = {}
+        potential_forms_dev['lemma'] = []
+        potential_forms_dev['gram'] = []
+        potential_forms_dev['forme'] = []
+        potential_forms_dev['gender'] = []
+        potential_forms_dev['number'] = []
+        potential_forms_dev['tense'] = []
+        potential_forms_dev['person'] = []
+        for i, id in enumerate(potential_forms.index):
+            for f in potential_forms.iloc[i].forme.split(':'):
+                potential_forms_dev['lemma'].append(potential_forms.iloc[i].lemma)
+                potential_forms_dev['gram'].append(potential_forms.iloc[i].gram)
+                potential_forms_dev['forme'].append(f)
+                if 'm' in f: potential_forms_dev['gender'].append('M')
+                elif 'f' in f: potential_forms_dev['gender'].append('F')
+                else: potential_forms_dev['gender'].append(None)
+                if 's' in f: potential_forms_dev['number'].append('singular')
+                elif 'p' in f: potential_forms_dev['number'].append('plural')
+                else: potential_forms_dev['number'].append(None)
+                if potential_forms.iloc[i].gram == 'Verbe':
+                    potential_forms_dev['tense'].append(self.tense_table_inv[re.sub('[^A-Z]','',f)])
+                    potential_forms_dev['person'].append(self.person_table[re.sub('[A-Z]','',f)])
+                else:
+                    potential_forms_dev['tense'].append(None)
+                    potential_forms_dev['person'].append(None)
+        return pd.DataFrame(potential_forms_dev)

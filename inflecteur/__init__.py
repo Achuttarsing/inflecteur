@@ -298,7 +298,8 @@ class inflecteur():
                 else: potential_forms_dev['number'].append(None)
                 if potential_forms.iloc[i].gram == 'Verbe':
                     potential_forms_dev['tense'].append(self.tense_table_inv[re.sub('[^A-Z]','',f)])
-                    potential_forms_dev['person'].append(self.person_table[re.sub('[A-Z]','',f)])
+                    if potential_forms_dev['gender'][-1] is None: potential_forms_dev['person'].append(self.person_table[re.sub('[A-Z]','',f)])
+                    else:potential_forms_dev['person'].append(None)
                 else:
                     potential_forms_dev['tense'].append(None)
                     potential_forms_dev['person'].append(None)

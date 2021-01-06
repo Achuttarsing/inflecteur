@@ -276,7 +276,10 @@ class inflecteur():
         Returns: 
             list of potential forms 
         """
-        potential_forms = self.dico_transformer.loc[[word]].copy()
+        try:
+            potential_forms = self.dico_transformer.loc[[word]].copy()
+        except:
+            return None
         potential_forms_dev = {}
         potential_forms_dev['lemma'] = []
         potential_forms_dev['gram'] = []

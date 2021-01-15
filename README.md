@@ -1,10 +1,12 @@
 # inflecteur
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](hhttps://colab.research.google.com/github/Achuttarsing/inflecteur/blob/main/inflecteur_demo.ipynb)
 
 inflecteur is a python inflector for french language based on the [DELA dictionary](http://infolingu.univ-mlv.fr)
 
 ## Installation :
 ```console
-$ pip install inflecteur
+$ pip install -U transformers 
+$ pip install -U inflecteur
 ```
 ## How to inflect ?
 ```python

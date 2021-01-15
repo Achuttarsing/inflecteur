@@ -1,5 +1,5 @@
 # inflecteur
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](hhttps://colab.research.google.com/github/Achuttarsing/inflecteur/blob/main/inflecteur_demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Achuttarsing/inflecteur/blob/main/inflecteur_demo.ipynb)
 
 inflecteur is a python inflector for french language based on the [DELA dictionary](http://infolingu.univ-mlv.fr)
 

@@ -14,12 +14,13 @@ class inflecteur():
         self.tense_table = {'Conditionnel': 'C',
                             'Futur': 'F',
                             'Imparfait': 'I',
-                            'Imparfait du subjonctif': 'T',
+                            'Subjonctif Imparfait': 'T',
                             'Infinitif': 'W',
-                            'Participe présent': 'G',
-                            'Passé composé': 'K',
-                            'Passé simple': 'J',
+                            'Participe Présent': 'G',
+                            'Passé Composé': 'K',
+                            'Passé Simple': 'J',
                             'Présent': 'P',
+                            'Subjonctif Présent': 'S',
                             'Impératif Présent': 'Y'}
         self.tense_table_inv = {v: k for k, v in self.tense_table.items()}
         self.person_table = {'1s': 'Je',
@@ -301,8 +302,10 @@ class inflecteur():
                 else: potential_forms_dev['number'].append(None)
                 if potential_forms.iloc[i].gram == 'Verbe':
                     potential_forms_dev['tense'].append(self.tense_table_inv[re.sub('[^A-Z]','',f)])
-                    if potential_forms_dev['gender'][-1] is None: potential_forms_dev['person'].append(self.person_table[re.sub('[A-Z]','',f)])
-                    else:potential_forms_dev['person'].append(None)
+                    if potential_forms_dev['gender'][-1] is None:
+                        res_person = re.sub('[A-Z]','',f)
+                        potential_forms_dev['person'].append(self.person_table[res_person]) if res_person is not '' else potential_forms_dev['person'].append(None)
+                    else: potential_forms_dev['person'].append(None)
                 else:
                     potential_forms_dev['tense'].append(None)
                     potential_forms_dev['person'].append(None)

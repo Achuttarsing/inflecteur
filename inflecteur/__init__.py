@@ -81,7 +81,7 @@ class inflecteur():
         else:
             if "dela-fr-public.zip" not in glob.glob('*'):
                 print("Downloading\t dela-fr-public...")
-                self.download_url(url="http://infolingu.univ-mlv.fr/DonneesLinguistiques/Dictionnaires/dela-fr-public.zip?B1=T%E9l%E9charger", save_path="dela-fr-public.zip")
+                self.download_url(url="https://github.com/Achuttarsing/inflecteur/blob/ef4d99c7934f10319b07aa35e970185a51c439ff/dela-fr-public.zip?raw=true", save_path="dela-fr-public.zip")
             if "dela-fr-public.dic" not in glob.glob('*') and "dela-fr-public.zip" in glob.glob('*'):
                 print("Unzipping\t dela-fr-public...")
                 self.unzip_file("dela-fr-public.zip", "./")

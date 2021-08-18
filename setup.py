@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
   name="inflecteur",
-  version="0.1.3",
+  version="0.1.4",
   packages=["inflecteur"],
   license="MIT",
   author="Adrien Chuttarsing",

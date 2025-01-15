@@ -201,7 +201,7 @@ class inflecteur():
             word (str): The word to inflect
             gender (str): 'f' for female, 'm' for male
             number (str): 's' for singular, 'p' for plural
-            tense (str): 'Conditionnel', 'Futur', 'Participe présent', 'Imparfait', 'Passé simple', 'Passé composé', 'Présent', 'Imparfait du subjonctif', 'Infinitif'
+            tense (str): 'Conditionnel', 'Futur', 'Participe Présent', 'Imparfait', 'Passé Simple', 'Passé Composé', 'Présent', 'Subjonctif Imparfait', 'Infinitif', 'Subjonctif Présent', 'Impératif Présent'
             pos (str): 'Adjectif', 'Déterminant', 'Partie de composé', 'PREPDET', 'Pronom', 'PREPADJ', 'PREPPRO', 'PRON', 'Verbe', 'Nom'
             person (str): '1' for 'je, nous', '2' for 'tu, vous', '3' for 'il, elle, ils, elles'
           
@@ -238,7 +238,7 @@ class inflecteur():
             text (str): Sentence to inflect
             gender (str): 'f' for female, 'm' for male
             number (str): 's' for singular, 'p' for plural
-            tense (str): 'Conditionnel', 'Futur', 'Participe présent', 'Imparfait', 'Passé simple', 'Passé composé', 'Présent', 'Imparfait du subjonctif', 'Infinitif'
+            tense (str): 'Conditionnel', 'Futur', 'Participe présent', 'Imparfait', 'Passé simple', 'Passé Composé', 'Présent', 'Imparfait du subjonctif', 'Infinitif'
           
         Returns: 
             sentence infected: The sentence inflected
